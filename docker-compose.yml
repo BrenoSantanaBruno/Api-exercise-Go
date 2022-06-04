@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  db:
+    image: postgres
+    volumes:
+      - /Users/breno/Downloads/source-code/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD
+
+#  docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
