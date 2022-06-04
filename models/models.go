@@ -1,7 +1,23 @@
 package models
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
 
+//Models is the wrapper for database
+type Models struct {
+	DB DBModel
+}
+
+//NewModels returns models with db pool
+func NewModels(db *sql.DB) Models {
+	return Models{
+		DB: DBModel{DB: db},
+	}
+}
+
+//Movie is the type for movies
 type Movie struct {
 	ID          int          `json:"id"`
 	Title       string       `json:"title"`
@@ -12,22 +28,24 @@ type Movie struct {
 	Rating      int          `json:"rating"`
 	MPAARating  string       `json:"mpaa_rating"`
 	CreatedAt   time.Time    `json:"created_at"`
-	UpdateAt    time.Time    `json:"update_at"`
+	UpdatedAt   time.Time    `json:"update_at"`
 	MovieGenre  []MovieGenre `json:"-"`
 }
 
+//Genre is the type of genre
 type Genre struct {
 	ID        int       `json:"id"`
 	GenreName string    `json:"genre_name"`
 	CreatedAt time.Time `json:"created_at"`
-	UpdateAt  time.Time `json:"update_at"`
+	UpdatedAt time.Time `json:"update_at"`
 }
 
+//MovieGenre is the type for movie genre
 type MovieGenre struct {
 	ID        int       `json:"id"`
 	MovieID   int       `json:"movie_id"`
 	GenreID   int       `json:"genre_id"`
 	Genre     Genre     `json:"genre"`
 	CreatedAt time.Time `json:"created_at"`
-	UpdateAt  time.Time `json:"update_at"`
+	UpdatedAt time.Time `json:"update_at"`
 }
