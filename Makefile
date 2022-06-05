@@ -1,13 +1,13 @@
-DB_URL=postgresql://root:secret@localhost:5432/projeto_escola?sslmode=disable
+DB_URL=postgresql:/root:secret' '@localhost:5432/projeto_escola?sslmode=disable
 
 network:
 	docker network create escola-network
 
 postgres:
-	docker run --name postgres-db -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=102030 -d postgres:14-alpine
+	docker run --name postgres-db -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
 
 postgress:
-	docker run --name postgres-db2 -p 5433:5433 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=102030 -d postgres:13
+	docker run --name postgres-db2 -p 5433:5433 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:13
 
 mysql:
 	docker run --name mysql8 -p 3306:3306  -e MYSQL_ROOT_PASSWORD=secret -d mysql:8
