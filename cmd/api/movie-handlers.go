@@ -39,3 +39,16 @@ func (app *application) getAllMovies(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+func (app *application) deleteMovie(w http.ResponseWriter, r *http.Request) {
+
+}
+func (app *application) insertMovie(w http.ResponseWriter, r *http.Request) {
+
+}
+func (app *application) updateMovie(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func (app *application) searchMovies(w http.ResponseWriter, r *http.Request) {
+
+}
