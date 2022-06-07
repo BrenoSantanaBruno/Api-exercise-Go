@@ -6,7 +6,7 @@ import (
 	"database/sql"
 )
 
-type TbAluno struct {
+type TbAlunos struct {
 	Idaluno      int64          `json:"idaluno"`
 	Desnome      string         `json:"desnome"`
 	Email        string         `json:"email"`
@@ -18,7 +18,7 @@ type TbAluno struct {
 	ModificadoEm sql.NullTime   `json:"modificado_em"`
 }
 
-type TbNota struct {
+type TbNotas struct {
 	Idaluno        int64 `json:"idaluno"`
 	NotaPortugues  int32 `json:"nota_portugues"`
 	NotaMatematica int32 `json:"nota_matematica"`

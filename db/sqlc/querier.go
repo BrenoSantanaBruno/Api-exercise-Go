@@ -7,11 +7,11 @@ import (
 )
 
 type Querier interface {
-	CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAluno, error)
+	CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAlunos, error)
 	DeleteAccount(ctx context.Context, idaluno int64) error
-	GetAccount(ctx context.Context, idaluno int64) (TbAluno, error)
-	ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAluno, error)
-	UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAluno, error)
+	GetAccount(ctx context.Context, idaluno int64) (TbAlunos, error)
+	ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAlunos, error)
+	UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAlunos, error)
 }
 
 var _ Querier = (*Queries)(nil)

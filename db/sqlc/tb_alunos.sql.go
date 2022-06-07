@@ -26,7 +26,7 @@ type CreateAccountParams struct {
 	Turma    sql.NullString `json:"turma"`
 }
 
-func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAluno, error) {
+func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAlunos, error) {
 	row := q.db.QueryRowContext(ctx, createAccount,
 		arg.Desnome,
 		arg.Email,
@@ -34,7 +34,7 @@ func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (T
 		arg.Endereco,
 		arg.Turma,
 	)
-	var i TbAluno
+	var i TbAlunos
 	err := row.Scan(
 		&i.Idaluno,
 		&i.Desnome,
@@ -64,9 +64,9 @@ SELECT idaluno, desnome, email, telefone, endereco, matricula, turma, dt_cadastr
 WHERE idaluno = $1 LIMIT 1
 `
 
-func (q *Queries) GetAccount(ctx context.Context, idaluno int64) (TbAluno, error) {
+func (q *Queries) GetAccount(ctx context.Context, idaluno int64) (TbAlunos, error) {
 	row := q.db.QueryRowContext(ctx, getAccount, idaluno)
-	var i TbAluno
+	var i TbAlunos
 	err := row.Scan(
 		&i.Idaluno,
 		&i.Desnome,
@@ -93,15 +93,15 @@ type ListAccountsParams struct {
 	Offset int32 `json:"offset"`
 }
 
-func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAluno, error) {
+func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAlunos, error) {
 	rows, err := q.db.QueryContext(ctx, listAccounts, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	items := []TbAluno{}
+	items := []TbAlunos{}
 	for rows.Next() {
-		var i TbAluno
+		var i TbAlunos
 		if err := rows.Scan(
 			&i.Idaluno,
 			&i.Desnome,
@@ -147,7 +147,7 @@ type UpdateAccountParams struct {
 	Turma    sql.NullString `json:"turma"`
 }
 
-func (q *Queries) UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAluno, error) {
+func (q *Queries) UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAlunos, error) {
 	row := q.db.QueryRowContext(ctx, updateAccount,
 		arg.Idaluno,
 		arg.Desnome,
@@ -156,7 +156,7 @@ func (q *Queries) UpdateAccount(ctx context.Context, arg UpdateAccountParams) (T
 		arg.Endereco,
 		arg.Turma,
 	)
-	var i TbAluno
+	var i TbAlunos
 	err := row.Scan(
 		&i.Idaluno,
 		&i.Desnome,
