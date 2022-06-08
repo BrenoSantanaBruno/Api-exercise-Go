@@ -39,9 +39,9 @@ DELETE FROM tb_cadastro_cursos
 WHERE idcurso = $1
 `
 
-func (q *Queries) DeleteCurso(ctx context.Context, idcurso int64) error {
+func (q *Queries) DeleteCurso(ctx context.Context, idcurso int64) (error, error) {
 	_, err := q.db.ExecContext(ctx, deleteCurso, idcurso)
-	return err
+	return err, nil
 }
 
 const getCadastroCursos = `-- name: GetCadastroCursos :one

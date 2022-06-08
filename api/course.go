@@ -84,3 +84,23 @@ func (server *Server) ListCourses(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, accounts)
 }
+
+// Deletecurso struct
+type DeleteCurso struct {
+	Idcurso int64 `uri:"idcurso" binding:"required,min=1"`
+}
+
+//DeleteCurso delete input from database per ID
+func (server *Server) DeleteCurso(ctx *gin.Context) {
+	var req DeleteCurso
+	if err := ctx.ShouldBindUri(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		return
+	}
+	accounts, err := server.store.DeleteCurso(ctx, req.Idcurso)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+	ctx.JSON(http.StatusOK, accounts)
+}

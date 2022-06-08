@@ -27,6 +27,8 @@ func NewServer(store *db.Store) *Server {
 
 	router.GET("/course", server.ListCourses)
 
+	router.DELETE("/course/:Idcurso", server.DeleteCurso)
+
 	server.router = router
 	return server
 }
