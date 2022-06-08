@@ -1,4 +1,4 @@
--- name: getCadastro_cursos :one
+-- name: GetCadastroCursos :one
 SELECT * FROM tb_cadastro_cursos
 WHERE idcurso = $1 LIMIT 1;
 

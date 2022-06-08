@@ -44,6 +44,24 @@ func (q *Queries) DeleteCurso(ctx context.Context, idcurso int64) error {
 	return err
 }
 
+const getCadastroCursos = `-- name: GetCadastroCursos :one
+SELECT idcurso, nome_curso, valor_curso, dt_cadastro, modificado_em FROM tb_cadastro_cursos
+WHERE idcurso = $1 LIMIT 1
+`
+
+func (q *Queries) GetCadastroCursos(ctx context.Context, idcurso int64) (TbCadastroCursos, error) {
+	row := q.db.QueryRowContext(ctx, getCadastroCursos, idcurso)
+	var i TbCadastroCursos
+	err := row.Scan(
+		&i.Idcurso,
+		&i.NomeCurso,
+		&i.ValorCurso,
+		&i.DtCadastro,
+		&i.ModificadoEm,
+	)
+	return i, err
+}
+
 const listCursos = `-- name: ListCursos :many
 SELECT idcurso, nome_curso, valor_curso, dt_cadastro, modificado_em FROM tb_cadastro_cursos
 ORDER BY nome_curso
@@ -76,22 +94,4 @@ func (q *Queries) ListCursos(ctx context.Context) ([]TbCadastroCursos, error) {
 		return nil, err
 	}
 	return items, nil
-}
-
-const getCadastro_cursos = `-- name: getCadastro_cursos :one
-SELECT idcurso, nome_curso, valor_curso, dt_cadastro, modificado_em FROM tb_cadastro_cursos
-WHERE idcurso = $1 LIMIT 1
-`
-
-func (q *Queries) getCadastro_cursos(ctx context.Context, idcurso int64) (TbCadastroCursos, error) {
-	row := q.db.QueryRowContext(ctx, getCadastro_cursos, idcurso)
-	var i TbCadastroCursos
-	err := row.Scan(
-		&i.Idcurso,
-		&i.NomeCurso,
-		&i.ValorCurso,
-		&i.DtCadastro,
-		&i.ModificadoEm,
-	)
-	return i, err
 }

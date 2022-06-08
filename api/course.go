@@ -2,6 +2,7 @@ package api
 
 import (
 	db "backend/db/sqlc"
+	"database/sql"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -30,33 +31,34 @@ func (server *Server) createCurso(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, account)
 }
 
-////GetAccountRequest struct
-//type getAccountRequest struct {
-//	Idaluno int64 `uri:"idaluno" binding:"required,min=1"`
-//}
-//
-////GetAccount returns per id the accounts
-//
-//func (server *Server) getAccount(ctx *gin.Context) {
-//	var req getAccountRequest
-//	if err := ctx.ShouldBindUri(&req); err != nil {
-//		ctx.JSON(http.StatusBadRequest, errorResponse(err))
-//		return
-//	}
-//
-//	account, err := server.store.GetAccount(ctx, req.Idaluno)
-//	if err != nil {
-//		if err == sql.ErrNoRows {
-//			ctx.JSON(http.StatusNotFound, errorResponse(err))
-//			return
-//		}
-//
-//		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-//		return
-//	}
-//	ctx.JSON(http.StatusOK, account)
-//
-//}
+//GetAccountRequest struct
+type getCadastroCursos struct {
+	idcurso int64 `json:"idcurso" binding:"required"`
+}
+
+//GetCadastroCursos returns per id the accounts
+
+func (server *Server) getCadastroCursos(ctx *gin.Context) {
+	var req getCadastroCursos
+	if err := ctx.ShouldBindUri(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		return
+	}
+
+	account, err := server.store.GetCadastroCursos(ctx, req.idcurso)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+	ctx.JSON(http.StatusOK, account)
+
+}
+
 //
 //type listAccountRequest struct {
 //	PageID   int32 `form:"page_id" binding:"required,min=1"`
