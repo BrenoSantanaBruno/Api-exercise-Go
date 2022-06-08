@@ -7,15 +7,15 @@ import (
 )
 
 type TbAlunos struct {
-	Idaluno      int64          `json:"idaluno"`
-	Desnome      string         `json:"desnome"`
-	Email        string         `json:"email"`
-	Telefone     int64          `json:"telefone"`
-	Endereco     string         `json:"endereco"`
-	Matricula    sql.NullInt64  `json:"matricula"`
-	Turma        sql.NullString `json:"turma"`
-	DtCadastro   sql.NullTime   `json:"dt_cadastro"`
-	ModificadoEm sql.NullTime   `json:"modificado_em"`
+	Idaluno      int64         `json:"idaluno"`
+	Desnome      string        `json:"desnome"`
+	Email        string        `json:"email"`
+	Telefone     int64         `json:"telefone"`
+	Endereco     string        `json:"endereco"`
+	Matricula    sql.NullInt64 `json:"matricula"`
+	Turma        string        `json:"turma"`
+	DtCadastro   sql.NullTime  `json:"dt_cadastro"`
+	ModificadoEm sql.NullTime  `json:"modificado_em"`
 }
 
 type TbNotas struct {

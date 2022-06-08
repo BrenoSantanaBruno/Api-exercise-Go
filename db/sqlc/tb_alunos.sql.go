@@ -5,7 +5,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createAccount = `-- name: CreateAccount :one
@@ -19,11 +18,11 @@ RETURNING idaluno, desnome, email, telefone, endereco, matricula, turma, dt_cada
 `
 
 type CreateAccountParams struct {
-	Desnome  string         `json:"desnome"`
-	Email    string         `json:"email"`
-	Telefone int64          `json:"telefone"`
-	Endereco string         `json:"endereco"`
-	Turma    sql.NullString `json:"turma"`
+	Desnome  string `json:"desnome"`
+	Email    string `json:"email"`
+	Telefone int64  `json:"telefone"`
+	Endereco string `json:"endereco"`
+	Turma    string `json:"turma"`
 }
 
 func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAlunos, error) {
@@ -139,12 +138,12 @@ RETURNING idaluno, desnome, email, telefone, endereco, matricula, turma, dt_cada
 `
 
 type UpdateAccountParams struct {
-	Idaluno  int64          `json:"idaluno"`
-	Desnome  string         `json:"desnome"`
-	Email    string         `json:"email"`
-	Telefone int64          `json:"telefone"`
-	Endereco string         `json:"endereco"`
-	Turma    sql.NullString `json:"turma"`
+	Idaluno  int64  `json:"idaluno"`
+	Desnome  string `json:"desnome"`
+	Email    string `json:"email"`
+	Telefone int64  `json:"telefone"`
+	Endereco string `json:"endereco"`
+	Turma    string `json:"turma"`
 }
 
 func (q *Queries) UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAlunos, error) {
