@@ -86,29 +86,23 @@ func (server *Server) ListCursos(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, accounts)
 }
 
-//
-////DeleteCurso creates the struct
+//DeleteCurso creates the struct
 //type DeleteCurso struct {
 //	Idcurso int64 `uri:"idcurso" binding:"required,min=1"`
 //}
 //
-//func (server *Server) Deletecurso(ctx *gin.Context) {
+//func (server *Server) DeleteCurso(ctx *gin.Context) {
 //	var req DeleteCurso
 //	if err := ctx.ShouldBindUri(&req); err != nil {
 //		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 //		return
 //	}
 //
-//	account, err := server.store.DeleteCurso(ctx, req.Idcurso)
+//	accounts, err := server.store.DeleteCurso(ctx)
 //	if err != nil {
-//		if err == sql.ErrNoRows {
-//			ctx.JSON(http.StatusNotFound, errorResponse(err))
-//			return
-//		}
-//
 //		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 //		return
 //	}
-//	ctx.JSON(http.StatusOK, account)
+//	ctx.JSON(http.StatusOK, accounts)
 //
 //}

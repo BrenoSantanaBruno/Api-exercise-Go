@@ -34,13 +34,13 @@ func (q *Queries) CreateCurso(ctx context.Context, arg CreateCursoParams) (TbCad
 	return i, err
 }
 
-const deleteCurso = `-- name: DeleteCurso :exec
+const DeleteCurso = `-- name: DeleteCurso :exec
 DELETE FROM tb_cadastro_cursos
 WHERE idcurso = $1
 `
 
 func (q *Queries) DeleteCurso(ctx context.Context, idcurso int64) error {
-	_, err := q.db.ExecContext(ctx, deleteCurso, idcurso)
+	_, err := q.db.ExecContext(ctx, DeleteCurso, idcurso)
 	return err
 }
 
