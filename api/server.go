@@ -1,8 +1,9 @@
 package api
 
 import (
-	db "backend/db/sqlc"
+	db "github.com/LinuxLoverCoder/Escola_Projeto/db/sqlc"
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 )
 
 type Server struct {

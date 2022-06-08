@@ -34,13 +34,13 @@ func (q *Queries) CreateCurso(ctx context.Context, arg CreateCursoParams) (TbCad
 	return i, err
 }
 
-const DeleteCurso = `-- name: DeleteCurso :exec
+const deleteCurso = `-- name: DeleteCurso :exec
 DELETE FROM tb_cadastro_cursos
 WHERE idcurso = $1
 `
 
 func (q *Queries) DeleteCurso(ctx context.Context, idcurso int64) error {
-	_, err := q.db.ExecContext(ctx, DeleteCurso, idcurso)
+	_, err := q.db.ExecContext(ctx, deleteCurso, idcurso)
 	return err
 }
 
@@ -66,11 +66,6 @@ const listCursos = `-- name: ListCursos :many
 SELECT idcurso, nome_curso, valor_curso, dt_cadastro, modificado_em FROM tb_cadastro_cursos
 ORDER BY nome_curso
 `
-type ListCoursesParams struct {
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
-}
-
 
 func (q *Queries) ListCursos(ctx context.Context) ([]TbCadastroCursos, error) {
 	rows, err := q.db.QueryContext(ctx, listCursos)

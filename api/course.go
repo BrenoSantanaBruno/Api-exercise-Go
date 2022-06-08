@@ -1,9 +1,10 @@
 package api
 
 import (
-	db "backend/db/sqlc"
 	"database/sql"
+	db "github.com/LinuxLoverCoder/Escola_Projeto/db/sqlc"
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 	"net/http"
 )
 
