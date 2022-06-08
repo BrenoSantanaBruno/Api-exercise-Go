@@ -13,7 +13,7 @@ mysql:
 	docker run --name mysql8 -p 3306:3306  -e MYSQL_ROOT_PASSWORD=secret -d mysql:8
 
 createdb:
-	docker exec -it postgres-db  createdb --username=root --pasword=secret --owner=root projeto_escola
+	docker exec -it postgres-db  createdb --username=root --owner=root projeto_escola
 
 dropdb:
 	docker exec -it postgres-db dropdb projeto_escola
@@ -43,7 +43,7 @@ test:
 	go test -v -cover ./...
 
 server:
-	go run ./cmd/api/*.go
+	go run main.go
 
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/techschool/simplebank/db/sqlc Store
