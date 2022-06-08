@@ -7,7 +7,8 @@ import (
 	"net/http"
 )
 
-type createAccountRequest struct {
+//CreateAccountRequest generates struct for request
+type CreateAccountRequest struct {
 	Desnome  string `json:"desnome" binding:"required"`
 	Email    string `json:"email" binding:"required"`
 	Telefone int64  `json:"telefone" binding:"required"`
@@ -15,8 +16,8 @@ type createAccountRequest struct {
 	Turma    string `json:"turma" binding:"required"`
 }
 
-func (server *Server) createAccount(ctx *gin.Context) {
-	var req createAccountRequest
+func (server *Server) CreateAccount(ctx *gin.Context) {
+	var req CreateAccountRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
@@ -38,14 +39,14 @@ func (server *Server) createAccount(ctx *gin.Context) {
 }
 
 //GetAccountRequest struct
-type getAccountRequest struct {
+type GetAccountRequest struct {
 	Idaluno int64 `uri:"idaluno" binding:"required,min=1"`
 }
 
 //GetAccount returns per id the accounts
 
-func (server *Server) getAccount(ctx *gin.Context) {
-	var req getAccountRequest
+func (server *Server) GetAccount(ctx *gin.Context) {
+	var req GetAccountRequest
 	if err := ctx.ShouldBindUri(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
@@ -65,13 +66,14 @@ func (server *Server) getAccount(ctx *gin.Context) {
 
 }
 
-type listAccountRequest struct {
+// ListAccountRequest struct generates the struct for Request API
+type ListAccountRequest struct {
 	PageID   int32 `form:"page_id" binding:"required,min=1"`
 	PageSize int32 `form:"page_size" binding:"required,min=5,max=10"`
 }
 
-func (server *Server) listAccounts(ctx *gin.Context) {
-	var req listAccountRequest
+func (server *Server) ListAccounts(ctx *gin.Context) {
+	var req ListAccountRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return

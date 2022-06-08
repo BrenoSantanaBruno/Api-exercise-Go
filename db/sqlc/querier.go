@@ -14,7 +14,7 @@ type Querier interface {
 	GetAccount(ctx context.Context, idaluno int64) (TbAlunos, error)
 	GetCadastroCursos(ctx context.Context, idcurso int64) (TbCadastroCursos, error)
 	ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAlunos, error)
-	ListCursos(ctx context.Context, arg ListCoursesParams) ([]TbCadastroCursos, error)
+	ListCursos(ctx context.Context) ([]TbCadastroCursos, error)
 	UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAlunos, error)
 }
 
