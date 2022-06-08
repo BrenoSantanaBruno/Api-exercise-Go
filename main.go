@@ -1,9 +1,9 @@
 package main
 
 import (
-	"backend/api"
-	db "backend/db/sqlc"
 	"database/sql"
+	"github.com/LinuxLoverCoder/Escola_Projeto/api"
+	db "github.com/LinuxLoverCoder/Escola_Projeto/db/sqlc"
 	_ "github.com/lib/pq"
 	"log"
 )
