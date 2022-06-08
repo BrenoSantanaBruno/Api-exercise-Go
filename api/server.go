@@ -19,7 +19,7 @@ func NewServer(store *db.Store) *Server {
 
 	router.GET("/accounts/:idaluno", server.getAccount)
 
-	router.GET("/accounts", server.listAccount)
+	router.GET("/accounts", server.listAccounts)
 	server.router = router
 	return server
 }

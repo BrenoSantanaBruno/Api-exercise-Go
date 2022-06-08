@@ -1,5 +1,3 @@
-DB_URL=postgresql:/root:secret' '@localhost:5432/projeto_escola?sslmode=disable
-
 network:
 	docker network create escola-network
 
