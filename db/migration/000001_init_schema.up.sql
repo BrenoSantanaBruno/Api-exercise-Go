@@ -5,7 +5,7 @@ CREATE TABLE "tb_alunos" (
                              "telefone" BIGINT NOT NULL,
                              "endereco" VARCHAR NOT NULL,
                              "matricula" bigserial,
-                             "turma" VARCHAR,
+                             "turma" VARCHAR NOT NULL,
                              "dt_cadastro" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
                              "modificado_em" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
                              CONSTRAINT PK_alunos PRIMARY KEY (idaluno)

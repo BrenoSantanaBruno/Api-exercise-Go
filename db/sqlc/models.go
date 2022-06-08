@@ -6,6 +6,8 @@ import (
 	"database/sql"
 )
 
+
+
 type TbAlunos struct {
 	Idaluno      int64         `json:"idaluno"`
 	Desnome      string        `json:"desnome"`
