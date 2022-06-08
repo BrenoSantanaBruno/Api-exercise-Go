@@ -25,6 +25,8 @@ func NewServer(store *db.Store) *Server {
 
 	router.GET("/course/:idcurso", server.getCadastroCursos)
 
+	router.GET("/course", server.ListCourses)
+
 	server.router = router
 	return server
 }

@@ -66,8 +66,13 @@ const listCursos = `-- name: ListCursos :many
 SELECT idcurso, nome_curso, valor_curso, dt_cadastro, modificado_em FROM tb_cadastro_cursos
 ORDER BY nome_curso
 `
+type ListCoursesParams struct {
+	Limit  int32 `json:"limit"`
+	Offset int32 `json:"offset"`
+}
 
-func (q *Queries) ListCursos(ctx context.Context) ([]TbCadastroCursos, error) {
+
+func (q *Queries) ListCursos(ctx context.Context, arg ListCoursesParams) ([]TbCadastroCursos, error) {
 	rows, err := q.db.QueryContext(ctx, listCursos)
 	if err != nil {
 		return nil, err
