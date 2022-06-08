@@ -20,3 +20,15 @@ CREATE TABLE "tb_notas" (
                             CONSTRAINT PK_notas PRIMARY KEY (idaluno),
                             CONSTRAINT PK_alunos_notas FOREIGN KEY (idaluno) REFERENCES tb_alunos (idaluno)
 );
+
+
+CREATE TABLE "tb_cadastro_cursos" (
+                                      "idcurso" bigserial,
+                                      "nome_curso" VARCHAR NOT NULL,
+                                      "valor_curso" BIGINT NOT NULL,
+                                      "dt_cadastro" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+                                      "modificado_em" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+                                      CONSTRAINT PK_cadastro_cursos PRIMARY KEY (idcurso)
+);
+
+

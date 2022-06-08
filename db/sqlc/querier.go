@@ -8,10 +8,14 @@ import (
 
 type Querier interface {
 	CreateAccount(ctx context.Context, arg CreateAccountParams) (TbAlunos, error)
+	CreateCurso(ctx context.Context, arg CreateCursoParams) (TbCadastroCursos, error)
 	DeleteAccount(ctx context.Context, idaluno int64) error
+	DeleteCurso(ctx context.Context, idcurso int64) error
 	GetAccount(ctx context.Context, idaluno int64) (TbAlunos, error)
 	ListAccounts(ctx context.Context, arg ListAccountsParams) ([]TbAlunos, error)
+	ListCursos(ctx context.Context) ([]TbCadastroCursos, error)
 	UpdateAccount(ctx context.Context, arg UpdateAccountParams) (TbAlunos, error)
+	getCadastro_cursos(ctx context.Context, idcurso int64) (TbCadastroCursos, error)
 }
 
 var _ Querier = (*Queries)(nil)

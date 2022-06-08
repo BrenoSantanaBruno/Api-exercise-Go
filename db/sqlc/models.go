@@ -18,6 +18,14 @@ type TbAlunos struct {
 	ModificadoEm sql.NullTime  `json:"modificado_em"`
 }
 
+type TbCadastroCursos struct {
+	Idcurso      int64        `json:"idcurso"`
+	NomeCurso    string       `json:"nome_curso"`
+	ValorCurso   int64        `json:"valor_curso"`
+	DtCadastro   sql.NullTime `json:"dt_cadastro"`
+	ModificadoEm sql.NullTime `json:"modificado_em"`
+}
+
 type TbNotas struct {
 	Idaluno        int64 `json:"idaluno"`
 	NotaPortugues  int32 `json:"nota_portugues"`

@@ -20,6 +20,9 @@ func NewServer(store *db.Store) *Server {
 	router.GET("/accounts/:idaluno", server.getAccount)
 
 	router.GET("/accounts", server.listAccounts)
+
+	router.POST("/course", server.createCurso)
+
 	server.router = router
 	return server
 }

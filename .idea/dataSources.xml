@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="go_movies@localhost" uuid="2e876b58-f6f4-4f9d-a03c-5cf9185ad01a">
+    <data-source source="LOCAL" name="projeto_escola@localhost" uuid="926a280e-fa20-4f17-9833-4fa6289e60d2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/go_movies</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/projeto_escola</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

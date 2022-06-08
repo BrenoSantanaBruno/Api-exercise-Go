@@ -19,11 +19,11 @@ dropdb:
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/projeto_escola?sslmode=disable" -verbose up
 
-migrateup1:
-	migrate -path db/migration -database "$(DB_URL)" -verbose up 1
+migrateup2:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/projeto_escola?sslmode=disable" -verbose up 2
 
 migratedown:
-	migrate -path db/migration -database "$(DB_URL)" -verbose down
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/projeto_escola?sslmode=disable" -verbose down
 
 migratedown1:
 	migrate -path db/migration -database "$(DB_URL)" -verbose down 1
@@ -59,4 +59,7 @@ proto:
 evans:
 	evans --host localhost --port 9090 -r repl
 
-.PHONY: network postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock proto evans
+initschema:
+	migrate create -ext sql -dir db/migration -seq init_schema
+
+.PHONY: network postgres createdb dropdb migrateup migratedown migrateup2 migratedown1 db_docs db_schema sqlc test server mock proto evans initschema
