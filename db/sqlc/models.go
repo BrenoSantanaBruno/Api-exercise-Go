@@ -6,6 +6,18 @@ import (
 	"database/sql"
 )
 
+type TbAdmin struct {
+	ID           int64        `json:"id"`
+	Nome         string       `json:"nome"`
+	Email        string       `json:"email"`
+	Endereco     string       `json:"endereco"`
+	Cpf          int32        `json:"cpf"`
+	Telefone     int32        `json:"telefone"`
+	Nivel        int32        `json:"nivel"`
+	DtCadastro   sql.NullTime `json:"dt_cadastro"`
+	ModificadoEm sql.NullTime `json:"modificado_em"`
+}
+
 type TbAlunos struct {
 	Idaluno      int64         `json:"idaluno"`
 	Desnome      string        `json:"desnome"`
